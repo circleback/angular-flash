@@ -30,7 +30,12 @@ angular.module('flash', [])
   };
   
   return function(level, text) {
-    emit(messages = asArrayOfMessages(level, text));
+		if(!level) {
+			cleanup(); 
+			emit();
+		} else {
+			emit(messages = asArrayOfMessages(level, text));
+		}
   };
 })
 
